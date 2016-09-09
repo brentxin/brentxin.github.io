@@ -15,11 +15,11 @@ function checkMobile() {
 //Admin Start
 function sskadmin(e) {
     var ssk = '';
-    if (e.user_id == 867394) {
+     if (e.user_id+"" == "6327123591288587009") {
         if (checkMobile()) {
-            ssk = '<span class="this_ua sskadmin">R00T</span><br><br>';
+            ssk = '<span class="this_ua sskadmin">博主</span><br><br>';
         } else {
-            ssk = '<span class="this_ua sskadmin">R00T</span>';
+            ssk = '<span class="this_ua sskadmin">博主</span>';
         }
     } else {
         if (checkMobile()) {
