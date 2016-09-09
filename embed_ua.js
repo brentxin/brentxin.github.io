@@ -1,5 +1,6 @@
 !
-function checkMobile() {
+function(e, t, s) {
+	function checkMobile() {
     var isiPad = navigator.userAgent.match(/iPad/i) != null;
     if (isiPad) {
         return false;
@@ -35,7 +36,6 @@ function show_ua(string) {
         return '<span class="this_ua platform ' + sua.os.name + '">' + sua.os.name + ' ' + sua.os.version + '</span><span class="this_ua browser ' + sua.browser.name + '">' + sua.browser.name + ' ' + sua.browser.version + '</span>';
     }
 }
-function(e, t, s) {
     function a() {
         return c.short_name ? g + "//" + c.short_name + "." + S.DOMAIN: S.REMOTE
     }
