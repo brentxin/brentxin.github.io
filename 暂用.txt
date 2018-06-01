@@ -1,0 +1,75 @@
+成品重量，线盘规格
+
+
+adb uninstall com.teamhd.gnamp
+测试消息   
+
+[{"id":1121,"callTime":"Nov 8, 2017 9:11:01 AM","destAddress":"","status":"N","proGgxh":"填充绳(30#)","account":1844,"unit":"kg","callAddress":"仓库(原材料入库)","rfidCode":"50 31 37 31 30 32 31 30 39 30 33 31,50 05 00 00 00 00 20 16 01 05 10 95"}]
+[{"id":9995,"callTime":"Dec 6, 2017 1:27:09 PM","status":"N","callAddress":"测试任务"}]
+P0001111222
+R80414000901
+
+item.materialGgxh
+    item.count + item.unit
+"从  " + item.startPlace + "  到  " + item.destination
+
+
+
+流浪动物救助
+
+
+质检接口
+http://192.168.0.104:8080/mes/rest/qualityMauReportManageAction/appScanRFID?semiAxis=1234&requestType=portal
+
+
+            val asyncSession = GreenDaoManager.getInstance().rawMaterialBeanDao.session.startAsyncSession()
+            asyncSession.listener = AsyncOperationListener { operation -> var data = operation.result as List<RawMaterialBean>
+                if (data != null && data.isNotEmpty()) {
+                    recordDatas3.addAll(data)
+                    var res = recordDatas3.mapTo(mutableListOf(HashMap<String, String>()), { hashMapOf(ITEM_TIME to SimpleDateFormat("yy/MM/dd HH:mm").format(it.getId()), ITEM_WORK to it.codes.split(",")[0], ITEM_SPEC to "" + it.codes.split(",").size) })
+                    res.removeAt(0)
+                    var simpleAdapter = SimpleAdapter(this, res,
+                            R.layout.item_record, arrayOf(ITEM_TIME, ITEM_ID, ITEM_SPEC), intArrayOf(R.id.tvDate, R.id.tvId, R.id.tvSpec))
+                    lvRecord.adapter = simpleAdapter
+                    simpleAdapter.notifyDataSetChanged()
+
+                    llRecordContent.visibility = View.VISIBLE
+                    tvNoData.visibility = View.GONE
+                } else {
+                    llRecordContent.visibility = View.GONE
+                    tvNoData.visibility = View.VISIBLE
+                }
+            }
+            asyncSession.loadAll(RawMaterialBean::class.java)
+
+
+
+13 00 01 03 01 0C 52 38 30 35 32 32 30 30 31 38 37 31 EB 85 13 00 01 03 02 0C 20 02 01 71 22 34 52 60 00 00 08 61 9D EC 06 00 01 01 02 06 6B 13 00 01 03 01 0C 52 38 30 35 32 32 30 30 31 38 37 31 EB 85 13 00 01 03 02 0C 20 02 01 71 22 34 52 60 00 00 08 61 9D EC 06 00 01 01 02 06 6B 13 00 01 03 01 0C 52 38 30 35 32 32 30 30 31 38 37 31 EB 85 13 00 01 03 02 0C 20 02 01 71 22 34 52 60 00 00 08 61 9D EC 06 00 01 01 02 06 6B 05 00 01 FB F2 3D 13 00 01 03 01 0C 52 38 30 35 32 32 30 30 31 38 37 31 EB 85 13 00 01 03 02 0C 20 02 01 71 22 34 52 60 00 00 08 61 9D EC 13 00 01 03 03 0C 20 02 01 71 22 34 52 60 00 00 08 62 EC A0 06 00 01 01 03 8F 7A 05 00 01 FB F2 3D 13 00 01 03 01 0C 52 38 30 35 32 32 30 30 31 38 37 31 EB 85 06 00 01 01 01 9D 59 13 00 01 03 01 0C 52 38 30 35 32 32 30 30 31 38 37 31 EB 85 06 00 01 01 01 9D 59 13 00 01 03 01 0C 52 38 30 35 32 32 30 30 31 38 37 31 EB 85 06 00 01 01 01 9D 59 13 00 01 03 01 0C 20 02 01 71 22 34 52 60 00 00 08 61 A3 6F 13 00 01 03 02 0C 52 38 30 35 32 32 30 30 31 38 37 31 D5 06 06 00 01 01 02 06 6B 13 00 01 03 01 0C 52 38 30 35 32 32 30 30 31 38 37 31 EB 85 13 00 01 03 02 0C 20 02 01 71 22 34 52 60 00 00 08 61 9D EC 06 00 01 01 02 06 6B 13 00 01 03 01 0C 52 38 30 35 32 32 30 30 31 38 37 31 EB 85 13 00 01 03 02 0C 20 02 01 71 22 34 52 60 00 00 08 61 9D EC 06 00 01 01 02 06 6B 13 00 01 03 01 0C 20 02 01 71 22 34 52 60 00 00 08 61 A3 6F 13 00 01 03 02 0C 52 38 30 35 32 32 30 30 31 38 37 31 D5 06 06 00 01 01 02 06 6B 05 00 01 FB F2 3D 13 00 01 03 01 0C 52 38 30 35 32 32 30 30 31 38 37 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
